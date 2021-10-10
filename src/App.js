@@ -58,7 +58,11 @@ function App() {
   }
 
   if (!isStart) {
-    return <StartMenu initialize={initialize} />
+    return (
+      <>
+        <StartMenu initialize={initialize} />
+      </>
+    )
   }
   return (
     <>

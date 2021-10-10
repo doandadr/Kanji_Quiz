@@ -27,6 +27,7 @@ button {
 
 body {
   background-color: var(--primary-dark);
+  overflow: hidden;
 }
 
 header,
@@ -51,11 +52,6 @@ header h1 {
 
 footer {
   bottom: 0;
-}
-
-main {
-  display: grid;
-  place-items: center;
 }
 
 .container {
@@ -268,7 +264,7 @@ main {
 
   .option {
     margin: 0;
-    padding: 0.3rem;
+    padding: 0.4rem 0;
     font-size: 1rem;
   }
 
