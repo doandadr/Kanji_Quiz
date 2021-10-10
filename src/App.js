@@ -4,6 +4,10 @@ import { shuffleArray } from './shuffleArray'
 import { getRandom } from './getRandom'
 
 import data from './kanji-jouyou.json'
+import ScoreBar from './ScoreBar'
+import Kanji from './Kanji'
+import StartMenu from './StartMenu'
+import Answers from './Answers'
 
 function App() {
   const [isStart, setIsStart] = useState(false)
@@ -54,15 +58,7 @@ function App() {
   }
 
   if (!isStart) {
-    return (
-      <>
-        <div className='start-menu'>
-          <button className='start-btn' onClick={() => initialize()}>
-            Press to Start!
-          </button>
-        </div>
-      </>
-    )
+    return <StartMenu initialize={initialize} />
   }
   return (
     <>
@@ -76,60 +72,9 @@ function App() {
           }`}
         >
           <div className='quiz-container'>
-            <div className='kanji-container'>
-              <div className='kanji-info'>
-                <h3>
-                  <span className='current-kanji'>{currentVal + 1}</span>/
-                  <span className='total-kanji'>{totalQs}</span>
-                </h3>
-              </div>
-              <h2 className='kanji'>{kanji}</h2>
-            </div>
-            <div
-              className='score-bar'
-              style={{
-                gridTemplateRows: `${wrongCount || '1'}fr ${
-                  rightCount || '1'
-                }fr`,
-              }}
-            >
-              <div className='wrong'>
-                <h3>{wrongCount}</h3>
-              </div>
-              <div className='right'>
-                <h3>{rightCount}</h3>
-              </div>
-            </div>
-            <div className='options-container'>
-              <button
-                type='button'
-                className='option'
-                onClick={(e) => handleAnswer(e)}
-              >
-                {possibleAns[0]}
-              </button>
-              <button
-                type='button'
-                className='option'
-                onClick={(e) => handleAnswer(e)}
-              >
-                {possibleAns[1]}
-              </button>
-              <button
-                type='button'
-                className='option'
-                onClick={(e) => handleAnswer(e)}
-              >
-                {possibleAns[2]}
-              </button>
-              <button
-                type='button'
-                className='option'
-                onClick={(e) => handleAnswer(e)}
-              >
-                {possibleAns[3]}
-              </button>
-            </div>
+            <Kanji currentVal={currentVal} totalQs={totalQs} kanji={kanji} />
+            <ScoreBar wrongCount={wrongCount} rightCount={rightCount} />
+            <Answers possibleAns={possibleAns} handleAnswer={handleAnswer} />
           </div>
           <div className='feedback'>
             <p>
