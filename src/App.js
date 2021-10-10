@@ -21,11 +21,9 @@ function App() {
   const handleAnswer = (e) => {
     const answer = e.target.innerText
     if (answer === currentAnswer) {
-      // logic for correct
       setIsCorrect(true)
       setRightCount(rightCount + 1)
     } else {
-      // logic for incorrect
       setIsCorrect(false)
       setWrongCount(wrongCount + 1)
     }
@@ -58,17 +56,17 @@ function App() {
     )
   }
 
-  const handleCheck = () => {
-    console.log(isStart)
-    console.log(kanjiList)
-    console.log(kanji)
-    console.log(wrongCount)
-    console.log(rightCount)
-    console.log(possibleAns)
-    console.log(isCorrect)
-    console.log(currentAnswer)
-    console.log(currentVal)
-  }
+  // const handleCheck = () => {
+  //   console.log(isStart)
+  //   console.log(kanjiList)
+  //   console.log(kanji)
+  //   console.log(wrongCount)
+  //   console.log(rightCount)
+  //   console.log(possibleAns)
+  //   console.log(isCorrect)
+  //   console.log(currentAnswer)
+  //   console.log(currentVal)
+  // }
 
   if (!isStart) {
     return (
@@ -84,11 +82,15 @@ function App() {
   return (
     <>
       <header>
-        <button onClick={handleCheck}>CHECK</button>
+        {/* <button onClick={handleCheck}>CHECK</button> */}
         <h1>Kanji Quiz</h1>
       </header>
       <main>
-        <div className={`container ${isCorrect ? 'green' : 'red'}`}>
+        <div
+          className={`container ${
+            currentQs > 1 && (isCorrect ? 'green' : 'red')
+          }`}
+        >
           <div className='quiz-container'>
             <div className='kanji-container'>
               <div className='kanji-info'>

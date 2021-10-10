@@ -2,8 +2,6 @@ export const shuffleArray = (arr) => {
   let currentIndex = arr.length,
     randomIndex
 
-  // console.log(arr.length)
-
   // While there remain elements to shuffle...
   while (currentIndex !== 0) {
     // Pick a remaining element...
@@ -16,7 +14,5 @@ export const shuffleArray = (arr) => {
       arr[currentIndex],
     ]
   }
-  // console.log(arr)
-
   return arr
 }
