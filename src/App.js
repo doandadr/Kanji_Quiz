@@ -19,8 +19,6 @@ function App() {
   const [currentVal, setCurrentVal] = useState(0)
 
   const handleAnswer = (e) => {
-    // TODO add answer logic
-
     const answer = e.target.innerText
     if (answer === currentAnswer) {
       // logic for correct
@@ -31,16 +29,15 @@ function App() {
       setIsCorrect(false)
       setWrongCount(wrongCount + 1)
     }
-    setCurrentQs(currentQs + 1)
-    setCurrentVal(currentVal + 1)
-    // setup next
-    setKanji(kanjiList[currentVal])
-    setCurrentAnswer(data[kanjiList[currentVal]].meanings[0])
+    setKanji(kanjiList[currentVal + 1])
+    setCurrentAnswer(data[kanjiList[currentVal + 1]].meanings[0])
     setPossibleAns(
-      shuffleArray([...getRandom(kanjiList, 3), kanjiList[currentVal]]).map(
+      shuffleArray([...getRandom(kanjiList, 3), kanjiList[currentVal + 1]]).map(
         (key) => data[key].meanings[0]
       )
     )
+    setCurrentQs(currentQs + 1)
+    setCurrentVal(currentVal + 1)
   }
   const initialize = () => {
     const shuffledKanji = shuffleArray(Object.keys(data))
@@ -91,7 +88,7 @@ function App() {
         <h1>Kanji Quiz</h1>
       </header>
       <main>
-        <div className='container'>
+        <div className={`container ${isCorrect ? 'green' : 'red'}`}>
           <div className='quiz-container'>
             <div className='kanji-container'>
               <div className='kanji-info'>
@@ -102,9 +99,20 @@ function App() {
               </div>
               <h2 className='kanji'>{kanji}</h2>
             </div>
-            <div className='score-bar'>
-              <div className='wrong'>{wrongCount}</div>
-              <div className='right'>{rightCount}</div>
+            <div
+              className='score-bar'
+              style={{
+                gridTemplateRows: `${wrongCount || '1'}fr ${
+                  rightCount || '1'
+                }fr`,
+              }}
+            >
+              <div className='wrong'>
+                <h3>{wrongCount}</h3>
+              </div>
+              <div className='right'>
+                <h3>{rightCount}</h3>
+              </div>
             </div>
             <div className='options-container'>
               <button
@@ -139,9 +147,10 @@ function App() {
           </div>
           <div className='feedback'>
             <p>
-              {(rightCount > 0 || wrongCount > 0) && isCorrect
-                ? 'Answer is Correct  :D'
-                : 'Answer is Incorrect :('}
+              {currentQs > 1 &&
+                (isCorrect
+                  ? 'Answer is Correct  :D'
+                  : 'Answer is Incorrect :(')}
             </p>
           </div>
         </div>
