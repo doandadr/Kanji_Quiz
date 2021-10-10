@@ -7,32 +7,6 @@ import { getRandom } from './getRandom'
 import data from './kanji-jouyou.json'
 
 function App() {
-  // total kanji : 2136
-
-  // let count = 0
-  // let arr = [0, 0, 0, 0, 0, 0]
-  // let jlpt
-  // for (let key in data) {
-  //   // console.log(data[key].jlpt_new)
-  //   jlpt = data[key].jlpt_new
-  //   if (jlpt) {
-  //     arr[jlpt - 1] += 1
-  //   } else {
-  //     arr[5] += 1
-  //   }
-  // }
-  // console.log(arr)
-  // const objectKeys = Object.keys(data)
-  // console.log(objectKeys)
-  // const meanings = objectKeys.map((kanji) => {
-  //   return data[kanji].meanings[0]
-  // })
-  // console.log(meanings)
-  // const jlpt_1 = Object.keys(data).filter((kanji) => {
-  //   return data[kanji].jlpt_new === 1
-  // })
-  // console.log(jlpt_1)
-
   const [isStart, setIsStart] = useState(false)
   const [currentQs, setCurrentQs] = useState(0)
   const [totalQs, setTotalQs] = useState(2136)
@@ -45,14 +19,8 @@ function App() {
   const [currentAnswer, setCurrentAnswer] = useState('')
   const [currentVal, setCurrentVal] = useState(0)
 
-  // setKanjiList(shuffledKanji)
-
   const handleAnswer = (e) => {
-    // const answer = e.target.innerText
-    // if (answer === currentAnswer) {
-    // } else {
-    // }
-    // setCurrentVal(currentVal + 1)
+    // TODO add answer logic
   }
   const initialize = () => {
     const shuffledKanji = shuffleArray(Object.keys(data))
@@ -75,7 +43,7 @@ function App() {
 
   const handleCheck = () => {
     console.log(isStart)
-    // console.log(kanjiList)
+    console.log(kanjiList)
     console.log(kanji)
     console.log(wrongCount)
     console.log(rightCount)
@@ -155,3 +123,7 @@ export default App
 
 // https://www.smashingmagazine.com/2014/07/bem-methodology-for-small-projects/
 // https://www.conventionalcommits.org/en/v1.0.0/
+// https://github.com/davidluzgouveia/kanji-data/blob/master/kanji-jouyou.json
+// https://community.wanikani.com/t/list-of-kanji-by-level/42036/4
+// https://github.com/davidluzgouveia/kanji-data
+// https://app.kanjialive.com/api/docs
