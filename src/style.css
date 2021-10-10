@@ -79,6 +79,7 @@ main {
 .feedback {
   margin: 0.5rem auto;
   text-align: center;
+  transition: var(--transition);
 }
 .feedback p {
   font-size: 1.75rem;
@@ -232,7 +233,7 @@ main {
 @media only screen and (max-width: 768px) {
   .container {
     height: auto;
-    margin: 8rem auto;
+    margin: 7rem auto;
   }
 
   .quiz-container {
@@ -240,14 +241,22 @@ main {
   }
 
   .kanji-container {
-    height: 50%;
     width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .kanji-info h3 {
+    font-size: 0.8rem;
   }
 
   .score-bar {
     width: 100%;
     height: 30px;
     grid-template-columns: 1fr 1fr;
+    margin-bottom: 1rem;
+  }
+  .score-bar h3 {
+    font-size: 1rem;
   }
 
   .options-container {
@@ -259,7 +268,12 @@ main {
 
   .option {
     margin: 0;
-    padding: 0;
+    padding: 0.3rem;
+    font-size: 1rem;
+  }
+
+  .feedback p {
+    font-size: 1rem;
   }
 }
 /*# sourceMappingURL=style.css.map */

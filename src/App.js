@@ -7,7 +7,6 @@ import data from './kanji-jouyou.json'
 
 function App() {
   const [isStart, setIsStart] = useState(false)
-  const [currentQs, setCurrentQs] = useState(0)
   const [totalQs, setTotalQs] = useState(2136)
   const [kanji, setKanji] = useState('懐')
   const [wrongCount, setWrongCount] = useState(1)
@@ -34,7 +33,6 @@ function App() {
         (key) => data[key].meanings[0]
       )
     )
-    setCurrentQs(currentQs + 1)
     setCurrentVal(currentVal + 1)
   }
   const initialize = () => {
@@ -42,7 +40,6 @@ function App() {
     setIsStart(true)
     setCurrentVal(0)
     setKanjiList(shuffledKanji)
-    setCurrentQs(1)
     setTotalQs(shuffledKanji.length)
     setKanji(shuffledKanji[currentVal])
     setCurrentAnswer(data[shuffledKanji[currentVal]].meanings[0])
@@ -55,18 +52,6 @@ function App() {
       ]).map((key) => data[key].meanings[0])
     )
   }
-
-  // const handleCheck = () => {
-  //   console.log(isStart)
-  //   console.log(kanjiList)
-  //   console.log(kanji)
-  //   console.log(wrongCount)
-  //   console.log(rightCount)
-  //   console.log(possibleAns)
-  //   console.log(isCorrect)
-  //   console.log(currentAnswer)
-  //   console.log(currentVal)
-  // }
 
   if (!isStart) {
     return (
@@ -82,20 +67,19 @@ function App() {
   return (
     <>
       <header>
-        {/* <button onClick={handleCheck}>CHECK</button> */}
         <h1>Kanji Quiz</h1>
       </header>
       <main>
         <div
           className={`container ${
-            currentQs > 1 && (isCorrect ? 'green' : 'red')
+            currentVal > 0 && (isCorrect ? 'green' : 'red')
           }`}
         >
           <div className='quiz-container'>
             <div className='kanji-container'>
               <div className='kanji-info'>
                 <h3>
-                  <span className='current-kanji'>{currentQs}</span>/
+                  <span className='current-kanji'>{currentVal + 1}</span>/
                   <span className='total-kanji'>{totalQs}</span>
                 </h3>
               </div>
@@ -149,7 +133,7 @@ function App() {
           </div>
           <div className='feedback'>
             <p>
-              {currentQs > 1 &&
+              {currentVal > 0 &&
                 (isCorrect
                   ? 'Answer is Correct  :D'
                   : 'Answer is Incorrect :(')}
