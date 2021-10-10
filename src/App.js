@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
-import './App.css'
 import { shuffleArray } from './shuffleArray'
 import { getRandom } from './getRandom'
 
@@ -21,12 +20,33 @@ function App() {
 
   const handleAnswer = (e) => {
     // TODO add answer logic
+
+    const answer = e.target.innerText
+    if (answer === currentAnswer) {
+      // logic for correct
+      setIsCorrect(true)
+      setRightCount(rightCount + 1)
+    } else {
+      // logic for incorrect
+      setIsCorrect(false)
+      setWrongCount(wrongCount + 1)
+    }
+    setCurrentQs(currentQs + 1)
+    setCurrentVal(currentVal + 1)
+    // setup next
+    setKanji(kanjiList[currentVal])
+    setCurrentAnswer(data[kanjiList[currentVal]].meanings[0])
+    setPossibleAns(
+      shuffleArray([...getRandom(kanjiList, 3), kanjiList[currentVal]]).map(
+        (key) => data[key].meanings[0]
+      )
+    )
   }
   const initialize = () => {
     const shuffledKanji = shuffleArray(Object.keys(data))
+    setIsStart(true)
     setCurrentVal(0)
     setKanjiList(shuffledKanji)
-    setIsStart(true)
     setCurrentQs(1)
     setTotalQs(shuffledKanji.length)
     setKanji(shuffledKanji[currentVal])
@@ -94,20 +114,32 @@ function App() {
               >
                 {possibleAns[0]}
               </button>
-              <button type='button' className='option'>
+              <button
+                type='button'
+                className='option'
+                onClick={(e) => handleAnswer(e)}
+              >
                 {possibleAns[1]}
               </button>
-              <button type='button' className='option'>
+              <button
+                type='button'
+                className='option'
+                onClick={(e) => handleAnswer(e)}
+              >
                 {possibleAns[2]}
               </button>
-              <button type='button' className='option'>
+              <button
+                type='button'
+                className='option'
+                onClick={(e) => handleAnswer(e)}
+              >
                 {possibleAns[3]}
               </button>
             </div>
           </div>
           <div className='feedback'>
             <p>
-              {(rightCount || wrongCount) && isCorrect
+              {(rightCount > 0 || wrongCount > 0) && isCorrect
                 ? 'Answer is Correct  :D'
                 : 'Answer is Incorrect :('}
             </p>
