@@ -5,14 +5,15 @@ import { shuffleArray } from './shuffleArray'
 const StartMenu = ({ initialize }) => {
   const [grade, setGrade] = useState(0)
   const [jlpt, setJlpt] = useState(0)
-  // const [number, setNumber] = useState(0)
+  const [number, setNumber] = useState(0)
   const [grades, setGrades] = useState([])
-  const [jlptLevels, setJlptLevels] = useState(Object.keys(data))
+  const [jlptLevels, setJlptLevels] = useState([])
   const [kanjiList, setKanjiList] = useState([])
 
   useEffect(() => {
     setGrades([1, 2, 3, 4, 5, 6, 8])
     setJlptLevels([1, 2, 3, 4, 5])
+    setNumber(100)
   }, [])
 
   useEffect(() => {
@@ -32,18 +33,19 @@ const StartMenu = ({ initialize }) => {
   const handleJLPTChange = (e) => {
     setJlpt(parseInt(e.target.value))
   }
-  // const handleNumberChange = (e) => {
-  //   setNumber(e.target.value)
-  //   if (number > kanjiList.length) {
-  //     alert('number cannot exceed maximum')
-  //   }
-  //   if (number <= 0) {
-  //     alert('number must be at least 1')
-  //   }
-  // }
+  const handleNumberChange = (e) => {
+    const num = parseInt(e.target.value)
+    if (num > kanjiList.length) {
+      setNumber(kanjiList.length)
+    } else if (num < 4) {
+      setNumber(4)
+    } else {
+      setNumber(num)
+    }
+  }
 
   const setupQuiz = () => {
-    initialize(shuffleArray(kanjiList))
+    initialize(shuffleArray(kanjiList).slice(0, number))
   }
 
   return (
@@ -83,10 +85,10 @@ const StartMenu = ({ initialize }) => {
             })}
           </select>
         </div>
-        {/* <div className='start__number'>
+        <div className='start__number'>
           <p>Number of kanji:</p>
-          <input type='number' onChange={handleNumberChange} />
-        </div> */}
+          <input type='number' value={number} onChange={handleNumberChange} />
+        </div>
         <button
           type='submit'
           className='start__btn'

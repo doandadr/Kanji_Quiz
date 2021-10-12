@@ -1,3 +1,9 @@
+@mixin rounded {
+  border-radius: 2em;
+  overflow: hidden;
+}
+// @mixin start
+
 // SECTION ROOT VARIABLES
 :root {
   --primary: rgb(168, 25, 204);
@@ -64,14 +70,13 @@ footer {
 
 // SECTION GENERAL
 .container {
+  @include rounded;
   width: 85%;
   height: 25rem;
   display: flex;
   flex-direction: column;
   margin: calc((100vh - 25rem) / 2) auto;
   background-color: var(--dark);
-  border-radius: 3rem;
-  overflow: hidden;
   transition: var(--transition);
 
   &--correct {
@@ -82,14 +87,13 @@ footer {
   }
 }
 .quiz-container {
+  @include rounded;
   width: 100%;
   height: 100%;
   background-color: var(--light);
   display: flex;
   padding: 1rem;
   gap: 0 1rem;
-  border-radius: 3rem;
-  overflow: hidden;
 }
 .feedback {
   margin: 0.5rem auto;
@@ -113,12 +117,11 @@ footer {
   transition: var(--transition);
 
   &__container {
+    @include rounded;
     width: calc(5rem + 40%);
     height: 70vh;
     background-color: var(--secondary-dark);
-    border-radius: 3rem;
     padding: 1rem;
-    overflow: hidden;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -129,32 +132,35 @@ footer {
     }
   }
   &__btn {
-    height: auto;
+    @include rounded;
+    // width: auto;
+    // height: auto;
+
     display: block;
-    padding: 0.5rem 1rem;
+    padding: 1rem;
     background-color: var(--secondary);
     border: none;
-    border-radius: 2rem;
+
     font-size: 1.5rem;
     color: var(--light);
     border-bottom: 0 solid transparent;
 
     transition: var(--transition);
 
-    // &:hover {
-    //   border-bottom: 0.5rem solid var(--primary-dark);
-    // }
+    &:hover {
+      border-bottom: 0.5rem solid var(--primary-dark);
+    }
   }
 
   &__select {
+    @include rounded;
     position: relative;
     display: flex;
-    width: 20em;
+    width: 60%;
     height: 3em;
     line-height: 3;
-    background: var(--secondary);
-    overflow: hidden;
-    border-radius: 2em;
+    background: var(--primary);
+
     &::after {
       content: '\25BC';
       position: absolute;
@@ -170,6 +176,8 @@ footer {
   }
 
   select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
     appearance: none;
     outline: 0;
     box-shadow: none;
@@ -183,10 +191,39 @@ footer {
 
   select {
     flex: 1;
-    padding: 0 0.5em;
+    padding: 0 1em;
     color: var(--light);
     cursor: pointer;
     font-size: 1em;
+  }
+
+  &__number {
+    @include rounded;
+    width: 60%;
+    height: 3em;
+    background: var(--secondary);
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      margin: auto 0;
+      padding: 0 1rem;
+      color: var(--light);
+    }
+
+    input[type='number'] {
+      // border-radius: 1em;
+      width: 40%;
+      padding: 0.5em 0.5em;
+      border: none;
+      appearance: none;
+      font-weight: 500;
+      font-size: 1rem;
+      @media only screen and (max-width: 768px) {
+        width: 50%;
+      }
+    }
   }
 }
 
@@ -203,6 +240,7 @@ footer {
 
 // SECTION KANJI
 .kanji {
+  @include rounded;
   flex: 1 0 0;
   height: 100%;
   width: 50%;
@@ -210,8 +248,7 @@ footer {
   display: grid;
   place-items: center;
   position: relative;
-  border-radius: 3rem;
-  overflow: hidden;
+
   box-shadow: var(--shadow);
 
   &__info {
@@ -244,14 +281,14 @@ footer {
 
 // SECTION SCOREBAR
 .score {
+  @include rounded;
+
   width: 30px;
   height: 100%;
   background-color: var(--secondary-dark);
   display: grid;
   grid-template-rows: 1fr 1fr;
-  border-radius: 3rem;
   box-shadow: var(--shadow);
-  overflow: hidden;
   transition: var(--transition);
   h3 {
     color: var(--light);
@@ -277,6 +314,7 @@ footer {
 
 // SECTION ANSWERS
 .answers {
+  @include rounded;
   flex: 1 0 0;
   height: 100%;
   width: 50%;
@@ -289,14 +327,14 @@ footer {
   grid-gap: 0.5rem;
   padding: 9rem 4rem;
   box-shadow: var(--shadow);
-  border-radius: 3rem;
   &__option {
+    // @include rounded;
+    border-radius: 2em;
     height: auto;
     border: none;
     padding: 1rem 1rem;
     background-color: var(--secondary);
     display: inline-block;
-    border-radius: 2rem;
     font-size: 1.25rem;
     font-weight: 500;
     color: var(--light);

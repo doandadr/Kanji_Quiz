@@ -29,11 +29,7 @@ function App() {
   const setupNext = () => {
     setKanji(kanjiList[currentVal + 1])
     setCurrentAnswer(data[kanjiList[currentVal + 1]].meanings[0])
-    setPossibleAns(
-      shuffleArray([...getRandom(kanjiList, 3), kanjiList[currentVal + 1]]).map(
-        (key) => data[key].meanings[0]
-      )
-    )
+    setPossibleAns(getPossibleAns(kanjiList, currentVal + 1))
     setCurrentVal(currentVal + 1)
   }
   const handleAnswer = (e) => {
@@ -46,11 +42,19 @@ function App() {
       setWrongCount(wrongCount + 1)
     }
 
-    if (currentVal === totalQs - 1) {
+    if (currentVal + 1 === totalQs) {
       setIsFinished(true)
     } else {
       setupNext()
     }
+  }
+
+  const getPossibleAns = (list, curVal) => {
+    const ans = getRandom(list, 4)
+    if (!ans.includes(list[curVal])) {
+      ans[0] = list[curVal]
+    }
+    return shuffleArray(ans.map((key) => data[key].meanings[0]))
   }
   const initialize = (kanjiFiltered) => {
     setIsStart(true)
@@ -61,24 +65,30 @@ function App() {
     setCurrentAnswer(data[kanjiFiltered[currentVal]].meanings[0])
     setWrongCount(0)
     setRightCount(0)
-    setPossibleAns(
-      shuffleArray([
-        ...getRandom(kanjiFiltered, 3),
-        kanjiFiltered[currentVal],
-      ]).map((key) => data[key].meanings[0])
-    )
+
+    setPossibleAns(getPossibleAns(kanjiFiltered, currentVal))
   }
 
   if (!isStart) {
-    return <StartMenu initialize={initialize} />
+    return (
+      <>
+        <Header />
+        <StartMenu initialize={initialize} />
+        <Footer />
+      </>
+    )
   }
   if (isFinished) {
     return (
-      <div className='finished'>
-        <h2>
-          your score is {rightCount} out of {rightCount + wrongCount}
-        </h2>
-      </div>
+      <>
+        <Header />
+        <div className='finished'>
+          <h2>
+            your score is {rightCount} out of {rightCount + wrongCount}
+          </h2>
+        </div>
+        <Footer />
+      </>
     )
   }
   return (
