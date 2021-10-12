@@ -5,9 +5,9 @@ import data from './kanji-jouyou.json'
 const Kanji = ({ currentVal, totalQs, kanji }) => {
   return (
     <div className='kanji'>
-      {/* <div className='kanji__info'>
+      <div className='kanji__info'>
         <FaInfoCircle />
-      </div> */}
+      </div>
       <div className='kanji__count'>
         <h3>
           <span className='kanji__current'>{currentVal + 1}</span>
