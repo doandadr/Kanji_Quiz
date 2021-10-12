@@ -61,8 +61,8 @@ const StartMenu = ({ initialize }) => {
                     })`}{' '}
                   </option>
                 )
-                return <></>
               }
+              return <></>
             })}
           </select>
         </div>
@@ -78,8 +78,8 @@ const StartMenu = ({ initialize }) => {
                     })`}
                   </option>
                 )
-                return <></>
               }
+              return <></>
             })}
           </select>
         </div>
