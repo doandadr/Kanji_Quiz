@@ -2,14 +2,14 @@ import React from 'react'
 
 const Kanji = ({ currentVal, totalQs, kanji }) => {
   return (
-    <div className='kanji-container'>
-      <div className='kanji-info'>
+    <div className='kanji'>
+      <div className='kanji__info'>
         <h3>
-          <span className='current-kanji'>{currentVal + 1}</span>/
-          <span className='total-kanji'>{totalQs}</span>
+          <span className='kanji__current'>{currentVal + 1}</span>/
+          <span className='kanji__total'>{totalQs}</span>
         </h3>
       </div>
-      <h2 className='kanji'>{kanji}</h2>
+      <h2 className='kanji__character'>{kanji}</h2>
     </div>
   )
 }

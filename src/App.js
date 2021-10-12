@@ -12,28 +12,21 @@ import Header from './Header'
 import Footer from './Footer'
 
 function App() {
-  const [isStart, setIsStart] = useState(false) // start
+  const [isStart, setIsStart] = useState(false)
+  const [isFinished, setIsFinished] = useState(false)
 
-  const [totalQs, setTotalQs] = useState(2136) // init
-  const [kanjiList, setKanjiList] = useState([]) // init
+  const [totalQs, setTotalQs] = useState(2136)
+  const [kanjiList, setKanjiList] = useState([])
 
   const [kanji, setKanji] = useState('懐')
-  const [wrongCount, setWrongCount] = useState(1) // quizlogic
-  const [rightCount, setRightCount] = useState(1) // quizlogic
-  const [possibleAns, setPossibleAns] = useState(['a', 'b', 'c', 'd']) // quizlogic
-  const [isCorrect, setIsCorrect] = useState(false) // quizlogic
-  const [currentAnswer, setCurrentAnswer] = useState('') // quizlogic
-  const [currentVal, setCurrentVal] = useState(0) // quizlogic
+  const [wrongCount, setWrongCount] = useState(1)
+  const [rightCount, setRightCount] = useState(1)
+  const [possibleAns, setPossibleAns] = useState(['a', 'b', 'c', 'd'])
+  const [isCorrect, setIsCorrect] = useState(false)
+  const [currentAnswer, setCurrentAnswer] = useState('')
+  const [currentVal, setCurrentVal] = useState(0)
 
-  const handleAnswer = (e) => {
-    const answer = e.target.innerText
-    if (answer === currentAnswer) {
-      setIsCorrect(true)
-      setRightCount(rightCount + 1)
-    } else {
-      setIsCorrect(false)
-      setWrongCount(wrongCount + 1)
-    }
+  const setupNext = () => {
     setKanji(kanjiList[currentVal + 1])
     setCurrentAnswer(data[kanjiList[currentVal + 1]].meanings[0])
     setPossibleAns(
@@ -43,20 +36,35 @@ function App() {
     )
     setCurrentVal(currentVal + 1)
   }
-  const initialize = () => {
-    const shuffledKanji = shuffleArray(Object.keys(data))
+  const handleAnswer = (e) => {
+    const answer = e.target.innerText
+    if (answer === currentAnswer) {
+      setIsCorrect(true)
+      setRightCount(rightCount + 1)
+    } else {
+      setIsCorrect(false)
+      setWrongCount(wrongCount + 1)
+    }
+
+    if (currentVal === totalQs - 1) {
+      setIsFinished(true)
+    } else {
+      setupNext()
+    }
+  }
+  const initialize = (kanjiFiltered) => {
     setIsStart(true)
     setCurrentVal(0)
-    setKanjiList(shuffledKanji)
-    setTotalQs(shuffledKanji.length)
-    setKanji(shuffledKanji[currentVal])
-    setCurrentAnswer(data[shuffledKanji[currentVal]].meanings[0])
+    setKanjiList(kanjiFiltered)
+    setTotalQs(kanjiFiltered.length)
+    setKanji(kanjiFiltered[currentVal])
+    setCurrentAnswer(data[kanjiFiltered[currentVal]].meanings[0])
     setWrongCount(0)
     setRightCount(0)
     setPossibleAns(
       shuffleArray([
-        ...getRandom(shuffledKanji, 3),
-        shuffledKanji[currentVal],
+        ...getRandom(kanjiFiltered, 3),
+        kanjiFiltered[currentVal],
       ]).map((key) => data[key].meanings[0])
     )
   }
@@ -64,13 +72,23 @@ function App() {
   if (!isStart) {
     return <StartMenu initialize={initialize} />
   }
+  if (isFinished) {
+    return (
+      <div className='finished'>
+        <h2>
+          your score is {rightCount} out of {rightCount + wrongCount}
+        </h2>
+      </div>
+    )
+  }
   return (
     <>
       <Header />
       <main>
         <div
           className={`container ${
-            currentVal > 0 && (isCorrect ? 'green' : 'red')
+            currentVal > 0 &&
+            (isCorrect ? 'container--correct' : 'container--incorrect')
           }`}
         >
           <div className='quiz-container'>

@@ -32,7 +32,8 @@ const Quiz = ({ kanjiList }) => {
     <main>
       <div
         className={`container ${
-          currentVal > 0 && (isCorrect ? 'green' : 'red')
+          currentVal > 0 &&
+          (isCorrect ? 'container--correct' : 'container--incorrect')
         }`}
       >
         <div className='quiz-container'>
