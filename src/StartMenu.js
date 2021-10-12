@@ -34,18 +34,19 @@ const StartMenu = ({ initialize }) => {
     setJlpt(parseInt(e.target.value))
   }
   const handleNumberChange = (e) => {
-    const num = parseInt(e.target.value)
-    if (num > kanjiList.length) {
+    const num = e.target.value
+    const parsedNum = parseInt(num)
+    if (parsedNum > kanjiList.length) {
       setNumber(kanjiList.length)
-    } else if (num < 4) {
+    } else if (parsedNum < 4) {
       setNumber(4)
     } else {
-      setNumber(num)
+      setNumber(parsedNum)
     }
   }
 
   const setupQuiz = () => {
-    initialize(shuffleArray(kanjiList).slice(0, number))
+    initialize(shuffleArray(kanjiList).slice(0, number ? number : 4))
   }
 
   return (
