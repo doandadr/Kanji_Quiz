@@ -234,22 +234,49 @@ footer p {
   position: relative;
   box-shadow: var(--shadow);
 }
-.kanji__info {
+.kanji__grade {
   display: table;
   position: absolute;
-  background-color: var(--secondary);
+  background-color: var(--primary);
   height: 15%;
+  text-align: center;
+  width: 30%;
+  bottom: 0;
+  left: 0;
+  border-top-right-radius: 2rem;
+}
+.kanji__jlpt {
+  display: table;
+  position: absolute;
+  background-color: var(--primary);
+  height: 15%;
+  text-align: center;
+  width: 30%;
+  bottom: 0;
+  right: 0;
+  border-top-left-radius: 2rem;
+}
+.kanji__count {
+  display: table;
+  position: absolute;
+  background-color: var(--primary);
+  height: 15%;
+  text-align: center;
   width: 50%;
   top: 0;
   right: 0;
   border-bottom-left-radius: 2rem;
-  text-align: center;
 }
-.kanji__info h3 {
+.kanji h3 {
   display: table-cell;
   vertical-align: middle;
   color: var(--light);
   font-size: 1.25rem;
+}
+@media screen and (max-width: 768px) {
+  .kanji h3 {
+    font-size: 1rem;
+  }
 }
 .kanji__character {
   padding: 1rem;

@@ -238,6 +238,13 @@ footer {
   }
 }
 
+@mixin kanji-info {
+  display: table;
+  position: absolute;
+  background-color: var(--primary);
+  height: 15%;
+  text-align: center;
+}
 // SECTION KANJI
 .kanji {
   @include rounded;
@@ -250,27 +257,39 @@ footer {
   position: relative;
 
   box-shadow: var(--shadow);
+  &__grade {
+    @include kanji-info;
 
-  &__info {
-    display: table;
-    position: absolute;
-    background-color: var(--secondary);
-    height: 15%;
+    width: 30%;
+    bottom: 0;
+    left: 0;
+    border-top-right-radius: 2rem;
+  }
+  &__jlpt {
+    @include kanji-info;
+    width: 30%;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 2rem;
+  }
+  &__count {
+    @include kanji-info;
     width: 50%;
     top: 0;
     right: 0;
-    // padding: 1rem 0;
     border-bottom-left-radius: 2rem;
-    text-align: center;
-
-    h3 {
-      display: table-cell;
-      vertical-align: middle;
-      color: var(--light);
-      font-size: 1.25rem;
+  }
+  h3 {
+    display: table-cell;
+    vertical-align: middle;
+    color: var(--light);
+    font-size: 1.25rem;
+    @media screen and (max-width: 768px) {
+      font-size: 1rem;
     }
   }
-
+  &__grade {
+  }
   &__character {
     padding: 1rem;
     font-size: calc(4rem + 6vw);
