@@ -36,7 +36,14 @@ const StartMenu = ({ initialize }) => {
   const handleNumberChange = (e) => {
     const num = e.target.value
     const parsedNum = parseInt(num)
-    if (parsedNum > kanjiList.length) {
+    setNumber(parsedNum)
+  }
+  const handleNumberBlur = (e) => {
+    const num = e.target.value
+    const parsedNum = parseInt(num)
+    if (!parsedNum || !num) {
+      setNumber(4)
+    } else if (parsedNum > kanjiList.length) {
       setNumber(kanjiList.length)
     } else if (parsedNum < 4) {
       setNumber(4)
@@ -88,7 +95,12 @@ const StartMenu = ({ initialize }) => {
         </div>
         <div className='start__number'>
           <p>Number of kanji:</p>
-          <input type='number' value={number} onChange={handleNumberChange} />
+          <input
+            type='number'
+            value={number}
+            onChange={handleNumberChange}
+            onBlur={handleNumberBlur}
+          />
         </div>
         <button
           type='submit'
