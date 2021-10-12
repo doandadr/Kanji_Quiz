@@ -8,18 +8,22 @@ import ScoreBar from './ScoreBar'
 import Kanji from './Kanji'
 import StartMenu from './StartMenu'
 import Answers from './Answers'
+import Header from './Header'
+import Footer from './Footer'
 
 function App() {
-  const [isStart, setIsStart] = useState(false)
-  const [totalQs, setTotalQs] = useState(2136)
+  const [isStart, setIsStart] = useState(false) // start
+
+  const [totalQs, setTotalQs] = useState(2136) // init
+  const [kanjiList, setKanjiList] = useState([]) // init
+
   const [kanji, setKanji] = useState('懐')
-  const [wrongCount, setWrongCount] = useState(1)
-  const [rightCount, setRightCount] = useState(1)
-  const [possibleAns, setPossibleAns] = useState(['a', 'b', 'c', 'd'])
-  const [isCorrect, setIsCorrect] = useState(false)
-  const [kanjiList, setKanjiList] = useState([])
-  const [currentAnswer, setCurrentAnswer] = useState('')
-  const [currentVal, setCurrentVal] = useState(0)
+  const [wrongCount, setWrongCount] = useState(1) // quizlogic
+  const [rightCount, setRightCount] = useState(1) // quizlogic
+  const [possibleAns, setPossibleAns] = useState(['a', 'b', 'c', 'd']) // quizlogic
+  const [isCorrect, setIsCorrect] = useState(false) // quizlogic
+  const [currentAnswer, setCurrentAnswer] = useState('') // quizlogic
+  const [currentVal, setCurrentVal] = useState(0) // quizlogic
 
   const handleAnswer = (e) => {
     const answer = e.target.innerText
@@ -58,17 +62,11 @@ function App() {
   }
 
   if (!isStart) {
-    return (
-      <>
-        <StartMenu initialize={initialize} />
-      </>
-    )
+    return <StartMenu initialize={initialize} />
   }
   return (
     <>
-      <header>
-        <h1>Kanji Quiz</h1>
-      </header>
+      <Header />
       <main>
         <div
           className={`container ${
@@ -90,7 +88,7 @@ function App() {
           </div>
         </div>
       </main>
-      <footer></footer>
+      <Footer />
     </>
   )
 }
