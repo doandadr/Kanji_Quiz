@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { shuffleArray } from './shuffleArray'
 import { getRandom } from './getRandom'
 
@@ -10,10 +10,12 @@ import StartMenu from './StartMenu'
 import Answers from './Answers'
 import Header from './Header'
 import Footer from './Footer'
+import Timer from './Timer'
 
 function App() {
   const [isStart, setIsStart] = useState(false)
   const [isFinished, setIsFinished] = useState(false)
+  const [time, setTime] = useState(0)
 
   const [totalQs, setTotalQs] = useState(2136)
   const [kanjiList, setKanjiList] = useState([])
@@ -25,6 +27,21 @@ function App() {
   const [isCorrect, setIsCorrect] = useState(false)
   const [currentAnswer, setCurrentAnswer] = useState('')
   const [currentVal, setCurrentVal] = useState(0)
+
+  useEffect(() => {
+    let interval = null
+
+    if (isStart && isFinished === false) {
+      interval = setInterval(() => {
+        setTime((time) => time + 10)
+      }, 10)
+    } else if (isFinished === true) {
+      clearInterval(interval)
+    }
+    return () => {
+      clearInterval(interval)
+    }
+  }, [isStart, isFinished])
 
   const setupNext = () => {
     setKanji(kanjiList[currentVal + 1])
@@ -69,6 +86,11 @@ function App() {
     setPossibleAns(getPossibleAns(kanjiFiltered, currentVal))
   }
 
+  const getTime = (time) => {
+    return `${('0' + Math.floor((time / 60000) % 60)).slice(-2)}.${(
+      '0' + Math.floor((time / 1000) % 60)
+    ).slice(-2)}`
+  }
   if (!isStart) {
     return (
       <>
@@ -86,6 +108,7 @@ function App() {
           <h2>
             your score is {rightCount} out of {rightCount + wrongCount}
           </h2>
+          <h2>time : {getTime(time)}</h2>
         </div>
         <Footer />
       </>
@@ -101,6 +124,7 @@ function App() {
             (isCorrect ? 'container--correct' : 'container--incorrect')
           }`}
         >
+          <Timer time={time} />
           <div className='quiz-container'>
             <Kanji currentVal={currentVal} totalQs={totalQs} kanji={kanji} />
             <ScoreBar wrongCount={wrongCount} rightCount={rightCount} />
