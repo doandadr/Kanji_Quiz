@@ -3,9 +3,9 @@ import data from './kanji-jouyou.json'
 import { shuffleArray } from './shuffleArray'
 
 const StartMenu = ({ initialize }) => {
-  const [grade, setGrade] = useState('0')
-  const [jlpt, setJlpt] = useState('0')
-  const [number, setNumber] = useState(0)
+  const [grade, setGrade] = useState(0)
+  const [jlpt, setJlpt] = useState(0)
+  // const [number, setNumber] = useState(0)
   const [grades, setGrades] = useState([])
   const [jlptLevels, setJlptLevels] = useState(Object.keys(data))
   const [kanjiList, setKanjiList] = useState([])
@@ -19,28 +19,28 @@ const StartMenu = ({ initialize }) => {
     setKanjiList(
       Object.keys(data).filter((kanji) => {
         return (
-          (grade == '0' || grade == data[kanji].grade) &&
-          (jlpt == '0' || jlpt == data[kanji].jlpt_new)
+          (grade === 0 || grade === data[kanji].grade) &&
+          (jlpt === 0 || jlpt === data[kanji].jlpt_new)
         )
       })
     )
   }, [grade, jlpt])
 
   const handleGradeChange = (e) => {
-    setGrade(e.target.value)
+    setGrade(parseInt(e.target.value))
   }
   const handleJLPTChange = (e) => {
-    setJlpt(e.target.value)
+    setJlpt(parseInt(e.target.value))
   }
-  const handleNumberChange = (e) => {
-    setNumber(e.target.value)
-    if (number > kanjiList.length) {
-      alert('number cannot exceed maximum')
-    }
-    if (number <= 0) {
-      alert('number must be at least 1')
-    }
-  }
+  // const handleNumberChange = (e) => {
+  //   setNumber(e.target.value)
+  //   if (number > kanjiList.length) {
+  //     alert('number cannot exceed maximum')
+  //   }
+  //   if (number <= 0) {
+  //     alert('number must be at least 1')
+  //   }
+  // }
 
   const setupQuiz = () => {
     initialize(shuffleArray(kanjiList))
@@ -53,14 +53,15 @@ const StartMenu = ({ initialize }) => {
           <select value={grade} onChange={handleGradeChange}>
             <option value='0'>Select Grade</option>
             {grades.map((g, index) => {
-              if (kanjiList.some((k) => data[k].grade == g)) {
+              if (kanjiList.some((k) => data[k].grade === g)) {
                 return (
                   <option value={`${g}`} key={index}>
                     {`Grade ${g} (${
-                      kanjiList.filter((k) => data[k].grade == g).length
+                      kanjiList.filter((k) => data[k].grade === g).length
                     })`}{' '}
                   </option>
                 )
+                return <></>
               }
             })}
           </select>
@@ -69,14 +70,15 @@ const StartMenu = ({ initialize }) => {
           <select value={jlpt} onChange={handleJLPTChange}>
             <option value='0'>Select JLPT Level</option>
             {jlptLevels.map((j, index) => {
-              if (kanjiList.some((k) => data[k].jlpt_new == j)) {
+              if (kanjiList.some((k) => data[k].jlpt_new === j)) {
                 return (
                   <option value={`${j}`} key={index}>
                     {`JLPT N${j} (${
-                      kanjiList.filter((k) => data[k].jlpt_new == j).length
+                      kanjiList.filter((k) => data[k].jlpt_new === j).length
                     })`}
                   </option>
                 )
+                return <></>
               }
             })}
           </select>
