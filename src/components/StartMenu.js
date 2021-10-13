@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
-import data from './kanji-jouyou.json'
-import { shuffleArray } from './shuffleArray'
+import data from '../utils/kanji-jouyou.json'
+import { shuffleArray } from '../utils/shuffleArray'
 
 const StartMenu = ({ initialize }) => {
   const [grade, setGrade] = useState(0)
@@ -12,7 +12,7 @@ const StartMenu = ({ initialize }) => {
 
   useEffect(() => {
     setGrades([1, 2, 3, 4, 5, 6, 8])
-    setJlptLevels([1, 2, 3, 4, 5])
+    setJlptLevels([5, 4, 3, 2, 1])
     setNumber(100)
   }, [])
 

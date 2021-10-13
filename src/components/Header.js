@@ -3,7 +3,9 @@ import React from 'react'
 const Header = () => {
   return (
     <header>
-      <h1>Kanji Quiz</h1>
+      <a href='https://kanjiquiz.netlify.app'>
+        <h1>Kanji Quiz</h1>
+      </a>
     </header>
   )
 }

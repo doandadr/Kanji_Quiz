@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaInfoCircle } from 'react-icons/fa'
-import { ordinal_suffix_of } from './ordinal-suffix-of'
-import data from './kanji-jouyou.json'
+import { ordinal_suffix_of } from '../utils/ordinal-suffix-of'
+import data from '../utils/kanji-jouyou.json'
 const Kanji = ({ currentVal, totalQs, kanji }) => {
   return (
     <div className='kanji'>
