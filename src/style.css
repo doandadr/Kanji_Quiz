@@ -33,6 +33,10 @@ body {
 
 a {
   text-decoration: none;
+  color: var(--light);
+}
+a:hover {
+  color: var(--primary);
 }
 a:after {
   bottom: 0;
