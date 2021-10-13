@@ -6,7 +6,12 @@ const Kanji = ({ currentVal, totalQs, kanji }) => {
   return (
     <div className='kanji'>
       <div className='kanji__info'>
-        <FaInfoCircle />
+        <a
+          href={`https://jisho.org/search/%23kanji%20${kanji}`}
+          target='_blank'
+        >
+          <FaInfoCircle />
+        </a>
       </div>
       <div className='kanji__count'>
         <h3>
