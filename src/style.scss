@@ -473,12 +473,10 @@ footer {
   grid-template-columns: 1fr 1fr;
   grid-template-rows: repeat(1fr);
   grid-gap: 0.5rem;
-  padding: 9rem 4rem;
+  padding: 0 4rem;
   box-shadow: var(--shadow);
   &__option {
-    // @include rounded;
     border-radius: 2em;
-    // height: auto;
     border: none;
     padding: 1rem 1rem;
     background-color: var(--secondary);
