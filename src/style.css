@@ -342,6 +342,8 @@ footer FaGithub {
   place-items: center;
 }
 .finished h2 {
+  position: relative;
+  z-index: 5;
   color: var(--light);
 }
 

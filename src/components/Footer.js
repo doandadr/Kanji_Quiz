@@ -5,12 +5,12 @@ const Footer = () => {
   return (
     <footer>
       <p>
-        <a href='http://nihongo.monash.edu/heisigwords.html'>
+        <a href='http://nihongo.monash.edu/heisigwords.html' target='_blank'>
           Based on Heisig's RTK
         </a>
       </p>
       <p>
-        <a href='https://github.com/Doanda37Rahma/Kanji_Quiz'>
+        <a href='https://github.com/Doanda37Rahma/Kanji_Quiz' target='_blank'>
           <FaGithub />
         </a>
       </p>

@@ -342,6 +342,8 @@ footer {
   display: grid;
   place-items: center;
   h2 {
+    position: relative;
+    z-index: 5;
     color: var(--light);
   }
 }

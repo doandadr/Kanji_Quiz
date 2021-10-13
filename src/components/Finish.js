@@ -10,9 +10,9 @@ const Finish = ({ rightCount, wrongCount, time }) => {
   return (
     <div className='finished'>
       <h2>
-        your score is {rightCount} out of {rightCount + wrongCount}
+        Your score is {rightCount} out of {rightCount + wrongCount}
       </h2>
-      <h2>time : {getTime(time)}</h2>
+      <h2>Time : {getTime(time)}</h2>
     </div>
   )
 }
