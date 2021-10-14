@@ -11,6 +11,9 @@ const StartMenu = ({ initialize }) => {
   const [kanjiList, setKanjiList] = useState([])
 
   useEffect(() => {
+    setNumber(kanjiList.length)
+  }, [kanjiList])
+  useEffect(() => {
     setGrades([1, 2, 3, 4, 5, 6, 8])
     setJlptLevels([5, 4, 3, 2, 1])
     setNumber(100)
@@ -34,9 +37,7 @@ const StartMenu = ({ initialize }) => {
     setJlpt(parseInt(e.target.value))
   }
   const handleNumberChange = (e) => {
-    const num = e.target.value
-    const parsedNum = parseInt(num)
-    setNumber(parsedNum)
+    setNumber(parseInt(e.target.value))
   }
   const handleNumberBlur = (e) => {
     const num = e.target.value
@@ -53,7 +54,13 @@ const StartMenu = ({ initialize }) => {
   }
 
   const setupQuiz = () => {
-    initialize(shuffleArray(kanjiList).slice(0, number ? number : 4))
+    if (kanjiList.length < 4) {
+      alert(
+        'Number of kanji needs to be at least 4 \nPlease select a different grade/JLPT level'
+      )
+    } else {
+      initialize(shuffleArray(kanjiList).slice(0, number ? number : 4))
+    }
   }
 
   return (
