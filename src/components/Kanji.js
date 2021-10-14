@@ -9,6 +9,7 @@ const Kanji = ({ currentVal, totalQs, kanji }) => {
         <a
           href={`https://jisho.org/search/%23kanji%20${kanji}`}
           target='_blank'
+          rel='noreferrer'
         >
           <FaInfoCircle />
         </a>
