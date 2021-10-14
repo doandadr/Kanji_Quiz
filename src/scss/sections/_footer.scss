@@ -1,0 +1,24 @@
+@use '../bootstrap' as *;
+
+// SECTION FOOTER
+footer {
+  width: 100vw;
+  height: 3rem;
+  background-color: $dark;
+  position: absolute;
+  z-index: 100;
+}
+footer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  bottom: 0;
+  p {
+    color: $light;
+    font-size: 1rem;
+    padding: 0 3rem;
+  }
+  FaGithub {
+    font-size: 3em;
+  }
+}

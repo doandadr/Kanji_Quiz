@@ -1,0 +1,39 @@
+// SECTION ANSWERS
+@use '../bootstrap' as *;
+
+.answers {
+  @include rounded;
+  flex: 1 0 0;
+  height: 100%;
+  width: 50%;
+  background-color: $secondary-dark;
+  display: grid;
+  justify-content: space-around;
+  align-content: center;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 0.5rem;
+  padding: 0 4rem;
+  box-shadow: $shadow;
+  &__option {
+    border-radius: 2em;
+    border: none;
+    padding: 1rem 1rem;
+    background-color: $secondary;
+    display: inline-block;
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: $light;
+    box-shadow: 0px 2px 6px $primary-dark;
+
+    transition: $transition;
+    position: relative;
+  }
+}
+@media (hover: hover) {
+  .answers__option:hover {
+    transform: translate(1px, -2px);
+    box-shadow: 0 3px 2px rgb(0 0 0 / 0.25);
+    background-color: $primary;
+  }
+}

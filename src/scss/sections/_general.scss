@@ -1,0 +1,41 @@
+@use '../bootstrap' as *;
+
+// SECTION GENERAL
+.container {
+  @include rounded;
+  position: relative;
+  z-index: 5;
+  width: 85%;
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  margin: calc((100vh - 25rem) / 2) auto;
+  background-color: $dark;
+  transition: $transition;
+
+  &--correct {
+    background-color: #31c338;
+  }
+  &--incorrect {
+    background-color: #ce3434;
+  }
+  &::before {
+    @include rounded;
+    z-index: 0;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 50%;
+    background: $dark;
+  }
+}
+.quiz-container {
+  position: relative;
+  @include rounded;
+  width: 100%;
+  height: 100%;
+  background-color: $light;
+  display: flex;
+  padding: 1rem;
+  gap: 0 1rem;
+}

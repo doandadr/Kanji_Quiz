@@ -1,0 +1,49 @@
+@use '../bootstrap' as *;
+
+// SECTION HERO
+.hero {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  #ni {
+    @include hero;
+    top: 1%;
+    left: -0.2em;
+    transform: rotateZ(-20deg);
+    font-size: calc(8rem + 19vh);
+  }
+  #hon {
+    @include hero;
+    top: -3%;
+    left: 39%;
+    transform: rotateZ(-10deg);
+    font-size: calc(8rem + 21vh);
+  }
+  #go {
+    @include hero;
+    top: 1%;
+    left: 81%;
+    transform: rotateZ(5deg);
+    font-size: calc(8rem + 17vh);
+  }
+  #kan {
+    @include hero;
+    bottom: -3%;
+    left: 14%;
+    transform: rotateZ(10deg);
+    font-size: calc(8rem + 23vh);
+  }
+  #ji {
+    @include hero;
+    bottom: -10%;
+    left: 65%;
+    transform: rotateZ(-20deg);
+    font-size: calc(8rem + 25vh);
+  }
+  @include mobile {
+    display: none;
+  }
+}

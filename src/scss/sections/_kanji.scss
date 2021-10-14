@@ -1,0 +1,75 @@
+@use '../bootstrap' as *;
+
+// SECTION KANJI
+.kanji {
+  @include rounded;
+  flex: 1 0 0;
+  height: 100%;
+  width: 50%;
+  background-color: $secondary-dark;
+  display: grid;
+  place-items: center;
+  position: relative;
+  box-shadow: $shadow;
+
+  &__info {
+    @include kanji-info;
+    width: 30%;
+    top: 0;
+    left: 0;
+    border-bottom-right-radius: 2rem;
+
+    color: white;
+    display: grid;
+    place-items: center;
+    FaInfoCircle {
+      font-size: 19rem;
+    }
+  }
+  &__grade {
+    @include kanji-info;
+
+    width: 40%;
+    bottom: 0;
+    left: 0;
+    border-top-right-radius: 2rem;
+    @include mobile {
+      border-radius: 0;
+      width: 50%;
+    }
+  }
+  &__jlpt {
+    @include kanji-info;
+    width: 40%;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 2rem;
+    @include mobile {
+      border-radius: 0;
+      width: 50%;
+    }
+  }
+  &__count {
+    @include kanji-info;
+    width: 50%;
+    top: 0;
+    right: 0;
+    border-bottom-left-radius: 2rem;
+  }
+  h3 {
+    display: table-cell;
+    vertical-align: middle;
+    color: $light;
+    font-size: 1rem;
+    @include mobile {
+      font-size: 1rem;
+      font-weight: bold;
+    }
+  }
+
+  &__character {
+    font-size: calc(4rem + 6vw);
+    font-weight: normal;
+    color: $light;
+  }
+}

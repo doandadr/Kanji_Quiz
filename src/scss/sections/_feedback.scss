@@ -1,0 +1,14 @@
+@use '../bootstrap' as *;
+
+// SECTION FEEDBACK
+.feedback {
+  margin: auto;
+  text-align: center;
+  transition: $transition;
+  padding: 0.5em 0;
+
+  p {
+    font-size: 1.75rem;
+    color: $light;
+  }
+}

@@ -1,0 +1,44 @@
+@use '../bootstrap' as *;
+
+// SECTION GLOBAL STYLES
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  max-width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+button {
+  cursor: pointer;
+}
+body {
+  background-color: $primary-dark;
+  overflow: hidden;
+}
+a {
+  text-decoration: none;
+  color: $light;
+  &:hover {
+    color: $primary;
+  }
+  &:after {
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #fff;
+    width: 0;
+  }
+  &:hover:after {
+    width: auto;
+    left: 0;
+  }
+}

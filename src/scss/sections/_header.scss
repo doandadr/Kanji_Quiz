@@ -1,0 +1,21 @@
+@use '../bootstrap' as *;
+
+// SECTION HEADER
+header {
+  width: 100vw;
+  height: 3rem;
+  background-color: $dark;
+  position: absolute;
+  z-index: 100;
+}
+header {
+  top: 0;
+  height: auto;
+
+  h1 {
+    font-size: 2rem;
+    padding: 1rem;
+    text-align: center;
+    color: $light;
+  }
+}
