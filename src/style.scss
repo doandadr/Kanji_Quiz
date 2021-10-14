@@ -226,8 +226,9 @@ footer {
   &__container {
     @include rounded;
     width: calc(5rem + 40%);
-    height: 70vh;
+    height: 50vh;
     background-color: var(--secondary-dark);
+    // background-color: transparent;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -274,7 +275,7 @@ footer {
       position: absolute;
       top: 0;
       right: 0;
-      padding: 0 1em;
+      padding: 0.1em 1em;
       background: var(--primary-dark);
       cursor: pointer;
       pointer-events: none;
@@ -490,7 +491,6 @@ footer {
 
     transition: var(--transition);
     position: relative;
-    border-bottom: 0 solid transparent;
   }
 }
 @media (hover: hover) {
