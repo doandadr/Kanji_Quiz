@@ -1,15 +1,4 @@
 @charset "UTF-8";
-:root {
-  --primary: rgb(168, 25, 204);
-  --primary-dark: rgb(69, 12, 83);
-  --secondary: rgb(218, 15, 218);
-  --secondary-dark: rgb(144, 27, 144);
-  --dark: rgb(29, 0, 36);
-  --light: rgb(241, 219, 241);
-  --shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
-  --transition: all 0.3s ease;
-}
-
 *,
 *::after,
 *::before {
@@ -27,16 +16,16 @@ button {
 }
 
 body {
-  background-color: var(--primary-dark);
+  background-color: #450c53;
   overflow: hidden;
 }
 
 a {
   text-decoration: none;
-  color: var(--light);
+  color: #f1dbf1;
 }
 a:hover {
-  color: var(--primary);
+  color: #a819cc;
 }
 a:after {
   bottom: 0;
@@ -57,7 +46,7 @@ header,
 footer {
   width: 100vw;
   height: 3rem;
-  background-color: var(--dark);
+  background-color: #1d0024;
   position: absolute;
   z-index: 100;
 }
@@ -70,7 +59,7 @@ header h1 {
   font-size: 2rem;
   padding: 1rem;
   text-align: center;
-  color: var(--light);
+  color: #f1dbf1;
 }
 
 footer {
@@ -80,7 +69,7 @@ footer {
   bottom: 0;
 }
 footer p {
-  color: var(--light);
+  color: #f1dbf1;
   font-size: 1rem;
   padding: 0 3rem;
 }
@@ -162,8 +151,8 @@ footer FaGithub {
   display: flex;
   flex-direction: column;
   margin: calc((100vh - 25rem) / 2) auto;
-  background-color: var(--dark);
-  transition: var(--transition);
+  background-color: #1d0024;
+  transition: all 0.3s ease;
 }
 .container--correct {
   background-color: #31c338;
@@ -179,7 +168,7 @@ footer FaGithub {
   position: absolute;
   width: 100%;
   height: 50%;
-  background: var(--dark);
+  background: #1d0024;
 }
 
 .timer {
@@ -187,7 +176,7 @@ footer FaGithub {
   margin: 0.1rem auto;
   padding: 0.3em 0;
   text-align: center;
-  transition: var(--transition);
+  transition: all 0.3s ease;
 }
 .timer .digits {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -204,7 +193,7 @@ footer FaGithub {
   overflow: hidden;
   width: 100%;
   height: 100%;
-  background-color: var(--light);
+  background-color: #f1dbf1;
   display: flex;
   padding: 1rem;
   gap: 0 1rem;
@@ -213,28 +202,28 @@ footer FaGithub {
 .feedback {
   margin: auto;
   text-align: center;
-  transition: var(--transition);
+  transition: all 0.3s ease;
   padding: 0.5em 0;
 }
 .feedback p {
   font-size: 1.75rem;
-  color: var(--light);
+  color: #f1dbf1;
 }
 
 .start {
   width: 100vw;
   height: 100vh;
-  background-color: var(--primary-dark);
+  background-color: #450c53;
   display: grid;
   place-items: center;
-  transition: var(--transition);
+  transition: all 0.3s ease;
 }
 .start__container {
   border-radius: 2em;
   overflow: hidden;
   width: calc(5rem + 40%);
   height: 50vh;
-  background-color: var(--secondary-dark);
+  background-color: #901b90;
   padding: 1rem;
   display: flex;
   flex-direction: column;
@@ -243,7 +232,7 @@ footer FaGithub {
   position: relative;
   z-index: 5;
 }
-@media only screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .start__container {
     width: 80%;
   }
@@ -253,16 +242,16 @@ footer FaGithub {
   overflow: hidden;
   display: block;
   padding: 1rem;
-  background-color: var(--secondary);
+  background-color: #da0fda;
   border: none;
-  box-shadow: 0px 2px 6px var(--primary-dark);
+  box-shadow: 0px 2px 6px #450c53;
   font-size: 1.5rem;
-  color: var(--light);
-  transition: var(--transition);
+  color: #f1dbf1;
+  transition: all 0.3s ease;
 }
 .start__btn:hover {
   transform: translate(1px, -2px);
-  background-color: var(--primary);
+  background-color: #a819cc;
 }
 .start__select {
   border-radius: 2em;
@@ -272,7 +261,7 @@ footer FaGithub {
   width: 60%;
   height: 3em;
   line-height: 3;
-  background: var(--primary);
+  background: #a819cc;
 }
 @media screen and (max-width: 768px) {
   .start__select {
@@ -285,11 +274,11 @@ footer FaGithub {
   top: 0;
   right: 0;
   padding: 0.1em 1em;
-  background: var(--primary-dark);
+  background: #450c53;
   cursor: pointer;
   pointer-events: none;
   transition: 0.25s all ease;
-  color: var(--light);
+  color: #f1dbf1;
 }
 .start select {
   -moz-appearance: none;
@@ -298,7 +287,7 @@ footer FaGithub {
   outline: 0;
   box-shadow: none;
   border: 0ch;
-  background: var(--secondary);
+  background: #da0fda;
   background-image: none;
 }
 .start select:hover::after {
@@ -307,7 +296,7 @@ footer FaGithub {
 .start select {
   flex: 1;
   padding: 0 1em;
-  color: var(--light);
+  color: #f1dbf1;
   cursor: pointer;
   font-size: 1em;
 }
@@ -316,7 +305,7 @@ footer FaGithub {
   overflow: hidden;
   width: 60%;
   height: 3em;
-  background: var(--secondary);
+  background: #da0fda;
   padding: 0;
   display: flex;
   justify-content: space-between;
@@ -329,7 +318,7 @@ footer FaGithub {
 .start__number p {
   margin: auto 0;
   padding: 0 1rem;
-  color: var(--light);
+  color: #f1dbf1;
 }
 .start__number input[type=number] {
   width: 40%;
@@ -339,7 +328,7 @@ footer FaGithub {
   font-weight: 500;
   font-size: 1rem;
 }
-@media only screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .start__number input[type=number] {
     width: 50%;
   }
@@ -354,7 +343,7 @@ footer FaGithub {
 .finished h2 {
   position: relative;
   z-index: 5;
-  color: var(--light);
+  color: #f1dbf1;
 }
 
 .kanji {
@@ -363,11 +352,11 @@ footer FaGithub {
   flex: 1 0 0;
   height: 100%;
   width: 50%;
-  background-color: var(--secondary-dark);
+  background-color: #901b90;
   display: grid;
   place-items: center;
   position: relative;
-  box-shadow: var(--shadow);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
 }
 .kanji__info {
   display: table;
@@ -434,7 +423,7 @@ footer FaGithub {
 .kanji h3 {
   display: table-cell;
   vertical-align: middle;
-  color: var(--light);
+  color: #f1dbf1;
   font-size: 1rem;
 }
 @media screen and (max-width: 768px) {
@@ -446,7 +435,7 @@ footer FaGithub {
 .kanji__character {
   font-size: calc(4rem + 6vw);
   font-weight: normal;
-  color: var(--light);
+  color: #f1dbf1;
 }
 
 .score {
@@ -454,14 +443,14 @@ footer FaGithub {
   overflow: hidden;
   width: 30px;
   height: 100%;
-  background-color: var(--secondary-dark);
+  background-color: #901b90;
   display: grid;
   grid-template-rows: 1fr 1fr;
-  box-shadow: var(--shadow);
-  transition: var(--transition);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
 }
 .score h3 {
-  color: var(--light);
+  color: #f1dbf1;
 }
 .score__wrong {
   background-color: #ce3434;
@@ -486,27 +475,27 @@ footer FaGithub {
   flex: 1 0 0;
   height: 100%;
   width: 50%;
-  background-color: var(--secondary-dark);
+  background-color: #901b90;
   display: grid;
   justify-content: space-around;
   align-content: center;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: repeat(1fr);
+  grid-template-rows: 1fr 1fr;
   grid-gap: 0.5rem;
   padding: 0 4rem;
-  box-shadow: var(--shadow);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.25);
 }
 .answers__option {
   border-radius: 2em;
   border: none;
   padding: 1rem 1rem;
-  background-color: var(--secondary);
+  background-color: #da0fda;
   display: inline-block;
   font-size: 1.25rem;
   font-weight: 500;
-  color: var(--light);
-  box-shadow: 0px 2px 6px var(--primary-dark);
-  transition: var(--transition);
+  color: #f1dbf1;
+  box-shadow: 0px 2px 6px #450c53;
+  transition: all 0.3s ease;
   position: relative;
 }
 
@@ -514,10 +503,10 @@ footer FaGithub {
   .answers__option:hover {
     transform: translate(1px, -2px);
     box-shadow: 0 3px 2px rgba(0, 0, 0, 0.25);
-    background-color: var(--primary);
+    background-color: #a819cc;
   }
 }
-@media only screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
   .container {
     height: calc(100vh - 10rem);
     margin: 5rem auto;

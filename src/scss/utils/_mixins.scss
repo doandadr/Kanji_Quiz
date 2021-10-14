@@ -1,0 +1,23 @@
+// MIXINS
+@mixin rounded {
+  border-radius: 2em;
+  overflow: hidden;
+}
+@mixin hero {
+  position: absolute;
+  z-index: 2;
+  font-weight: 800;
+  color: rgba(48, 4, 61, 0.4);
+}
+@mixin kanji-info {
+  display: table;
+  position: absolute;
+  background-color: rgb(167, 29, 167);
+  height: 15%;
+  text-align: center;
+}
+@mixin mobile {
+  @media screen and (max-width: 768px) {
+    @content;
+  }
+}
