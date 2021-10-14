@@ -266,6 +266,9 @@ footer {
     position: relative;
     display: flex;
     width: 60%;
+    @media screen and (max-width: 768px) {
+      width: 80%;
+    }
     height: 3em;
     line-height: 3;
     background: var(--primary);
@@ -309,6 +312,10 @@ footer {
   &__number {
     @include rounded;
     width: 60%;
+    @media screen and (max-width: 768px) {
+      width: 80%;
+    }
+
     height: 3em;
     background: var(--secondary);
     padding: 0;

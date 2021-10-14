@@ -274,6 +274,11 @@ footer FaGithub {
   line-height: 3;
   background: var(--primary);
 }
+@media screen and (max-width: 768px) {
+  .start__select {
+    width: 80%;
+  }
+}
 .start__select::after {
   content: "▼";
   position: absolute;
@@ -315,6 +320,11 @@ footer FaGithub {
   padding: 0;
   display: flex;
   justify-content: space-between;
+}
+@media screen and (max-width: 768px) {
+  .start__number {
+    width: 80%;
+  }
 }
 .start__number p {
   margin: auto 0;
