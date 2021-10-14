@@ -1,6 +1,6 @@
 # Kanji Quiz
 
-This is a quiz SPA for japanese [jouyou kanji](https://en.wikipedia.org/wiki/J%C5%8Dy%C5%8D_kanji) characters based on Heisig's Remembering The Kanji book.<br>
+[This](https://kanjiquiz.netlify.app/) is a quiz SPA for japanese [jouyou kanji](https://en.wikipedia.org/wiki/J%C5%8Dy%C5%8D_kanji) characters based on Heisig's Remembering The Kanji book.<br>
 Built with react.js and styled with scss.
 
 ## Start Menu
