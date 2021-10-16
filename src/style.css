@@ -426,9 +426,9 @@ footer FaGithub {
   border: none;
   padding: 1rem 1rem;
   background-color: #da0fda;
-  display: inline-block;
-  font-size: 1.25rem;
-  font-weight: 500;
+  display: block;
+  font-size: 1.4em;
+  font-weight: 600;
   color: #f1dbf1;
   box-shadow: 0px 2px 6px #450c53;
   transition: all 0.3s ease;
